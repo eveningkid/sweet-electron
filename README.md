@@ -8,8 +8,7 @@ const sweet = require('sweet-electron')(electron);
 sweet().url(__dirname, 'index.html').run();
 ```
 
-Install `sweet-electron`, `yarn add sweet-electron`.<br />
-Copy/paste this code. Run it using `electron`, such as: `$ electron script.js`.
+Install sweet-electron: `yarn add sweet-electron`. Copy/paste this code. Run it using `electron`, such as: `$ electron script.js`.
 
 ![Sweeeeeet](https://media.giphy.com/media/vjvx6YjG3ADo4/giphy.gif)
 
@@ -18,11 +17,10 @@ Copy/paste this code. Run it using `electron`, such as: `$ electron script.js`.
 
 # Implementation
 ## Initialisation
-`sweet-electron` package requires `electron` to be passed as an argument when importing. That makes it more like a wrapper.<br />
-`sweet()` returns an instance of `SweetElectron`.
+sweet-electron requires electron to be passed as an argument when importing it. That makes it more like a wrapper. `sweet()` returns an instance of `SweetElectron`.
 
 ## API
-`SweetElectron`
+SweetElectron
 - `url(String|Array[string]|Function)`: wrapper around [loadURL](https://electronjs.org/docs/api/browser-window#winloadurlurl-options)
   - if **String**: will use it as a path directly
   - if **Array[String]**: will call [path.join](https://nodejs.org/api/path.html#path_path_join_paths) on all the arguments
