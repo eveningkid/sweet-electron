@@ -8,7 +8,8 @@ const sweet = require('sweet-electron')(electron);
 sweet().url(__dirname, 'index.html').run();
 ```
 
-Install sweet-electron: `yarn add sweet-electron`. Copy/paste this code. Run it using `electron`, such as: `$ electron script.js`.
+Install sweet-electron: `yarn add sweet-electron`.<br />
+Copy/paste this code. Run it using `electron`, such as: `$ electron script.js`.
 
 ![Sweeeeeet](https://media.giphy.com/media/vjvx6YjG3ADo4/giphy.gif)
 
