@@ -15,6 +15,7 @@ Copy/paste this code. Run it using `electron`, such as: `$ electron script.js`.
 
 - [API](#api)
 - [Advanced Example](#advanced-example)
+- [Working Example (external)](https://github.com/eveningkid/reacto/blob/master/public/main.js)
 
 # Implementation
 ## Initialisation
