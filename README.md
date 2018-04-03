@@ -18,7 +18,7 @@ Copy/paste this code. Run it using `electron`, such as: `$ electron script.js`.
 - [Working Example (external)](https://github.com/eveningkid/reacto/blob/master/public/main.js)
 
 # Implementation
-## Initialisation
+## Initialization
 sweet-electron requires electron to be passed as an argument when importing it. That makes it more like a wrapper. `sweet()` returns an instance of `SweetElectron`.
 
 ## API
