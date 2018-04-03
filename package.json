@@ -1,0 +1,11 @@
+{
+  "name": "sweet-electron",
+  "description": "Easy, minimalist framework for Electron applications",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "electron-is": "^2.4.0",
+    "is-url": "^1.2.4"
+  }
+}
