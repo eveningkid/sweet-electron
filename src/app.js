@@ -25,7 +25,7 @@ class App {
         if (process.platform !== 'darwin') this.app.quit();
       })
       .on('activate', () => {
-        if (mainWindow === null) this.createWindow();
+        if (this.mainWindow === null) this.createWindow();
       });
   }
 
