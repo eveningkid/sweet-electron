@@ -13,6 +13,7 @@ const DEFAULT_OPTIONS = {
   },
   window: {
   },
+  shortcuts: null,
 };
 
 class SweetElectron {
@@ -24,8 +25,9 @@ class SweetElectron {
     this.run = this.run.bind(this);
   }
 
-  run() {
+  run(callback) {
     this.app.init();
+    if (callback) callback(this.app.mainWindow);
   }
 
   url(...args) {
@@ -71,6 +73,11 @@ class SweetElectron {
 
   window(options) {
     this.options.window = options;
+    return this;
+  }
+
+  shortcuts(shortcuts) {
+    this.options.shortcuts = shortcuts;
     return this;
   }
 }

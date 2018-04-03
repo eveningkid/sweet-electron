@@ -1,4 +1,5 @@
 const isURL = require('is-url');
+const is = require('electron-is');
 
 class App {
   constructor(electron, options) {
@@ -10,6 +11,7 @@ class App {
     this.init = this.init.bind(this);
     this.createWindow = this.createWindow.bind(this);
     this.setAbout = this.setAbout.bind(this);
+    this.registerShortcuts = this.registerShortcuts.bind(this);
   }
 
   init() {
@@ -17,6 +19,7 @@ class App {
       .on('ready', () => {
         this.setAbout();
         this.createWindow();
+        this.registerShortcuts();
       })
       .on('window-all-closed', () => {
         if (process.platform !== 'darwin') this.app.quit();
@@ -27,7 +30,13 @@ class App {
   }
 
   createWindow() {
-    this.mainWindow = new this.electron.BrowserWindow(this.options.window);
+    let windowOptions = this.options.window;
+
+    if (typeof windowOptions === 'function') {
+      windowOptions = windowOptions(is);
+    }
+
+    this.mainWindow = new this.electron.BrowserWindow(windowOptions);
 
     if (this.options.app.url) {
       let url = this.options.app.url;
@@ -61,6 +70,20 @@ class App {
       }, this.options.about);
 
       this.app.setAboutPanelOptions(aboutPanelOptions);
+    }
+  }
+
+  registerShortcuts() {
+    if (this.options.shortcuts) {
+      let shortcuts = this.options.shortcuts;
+
+      if (typeof shortcuts === 'function') {
+        shortcuts = shortcuts(this.mainWindow);
+      }
+
+      for (const command in shortcuts) {
+        this.electron.globalShortcut.register(command, shortcuts[command]);
+      }
     }
   }
 }
