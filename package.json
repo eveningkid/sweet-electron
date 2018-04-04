@@ -1,9 +1,14 @@
 {
   "name": "sweet-electron",
   "description": "Easy, minimalist framework for Electron applications",
+  "author": {
+    "name": "Arnaud Dellinger",
+    "url": "https://github.com/eveningkid"
+  },
   "version": "1.0.3",
   "main": "index.js",
   "license": "MIT",
+  "repository": "eveningkid/sweet-electron",
   "dependencies": {
     "electron-is": "^2.4.0",
     "is-url": "^1.2.4"
