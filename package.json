@@ -12,5 +12,13 @@
   "dependencies": {
     "electron-is": "^2.4.0",
     "is-url": "^1.2.4"
-  }
+  },
+  "keywords": [
+    "electron",
+    "framework",
+    "electronjs",
+    "sweet",
+    "javascript",
+    "nodejs"
+  ]
 }
