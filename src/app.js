@@ -20,6 +20,10 @@ class App {
         this.setAbout();
         this.createWindow();
         this.registerShortcuts();
+
+        if (this.options.events.ready && this.mainWindow) {
+          this.options.events.ready(is, this.mainWindow, this.app);
+        }
       })
       .on('window-all-closed', () => {
         if (process.platform !== 'darwin') this.app.quit();
@@ -49,7 +53,7 @@ class App {
 
       if (!(this.options.app.menu instanceof this.electron.Menu)) {
         if (typeof this.options.app.menu === 'function') {
-          menu = menu(this.mainWindow, this.app);
+          menu = menu(is, this.mainWindow, this.app);
         }
 
         menu = this.electron.Menu.buildFromTemplate(menu);

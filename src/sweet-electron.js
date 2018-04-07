@@ -14,6 +14,9 @@ const DEFAULT_OPTIONS = {
   window: {
   },
   shortcuts: null,
+  events: {
+    ready: null,
+  },
 };
 
 class SweetElectron {
@@ -78,6 +81,15 @@ class SweetElectron {
 
   shortcuts(shortcuts) {
     this.options.shortcuts = shortcuts;
+    return this;
+  }
+
+  ready(ready) {
+    if (typeof ready !== 'function') {
+      throw new Error('The argument passed to .ready(...) is not a function');
+    }
+
+    this.options.events.ready = ready;
     return this;
   }
 }
