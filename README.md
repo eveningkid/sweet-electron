@@ -34,10 +34,11 @@ SweetElectron
 - `window(Object|Function)`: additional options to be passed during the [main window](https://electronjs.org/docs/api/browser-window) creation
   - if **Function**: should return an *Object*. Will be passed an `electron-is` instance as its first parameter
 - `ready(Function)`: function called after Electron's `ready` event is fired. Requires a function, which will get `electron-is` and `mainWindow` parameters.
-- `events(Object{channel:callback})`: will loop over each *channel* and register its associated *callback*. Each *callback* will get a reference to the current main window as its last parameter (e.g `(event, payload, mainWindow) => { ... }`). Wrapper around [ipcMain](https://electronjs.org/docs/api/ipc-main). Should be combined using [ipcRenderer](https://electronjs.org/docs/api/ipc-renderer) on client-side
+- `rendererEvents(Object{channel:callback})`: will loop over each *channel* and register its associated *callback*. Each *callback* will get a reference to the current main window as its last parameter (e.g `(event, payload, mainWindow) => { ... }`). Wrapper around [ipcMain](https://electronjs.org/docs/api/ipc-main). Should be combined using [ipcRenderer](https://electronjs.org/docs/api/ipc-renderer) on client-side
 - `shortcuts(Object{command:callback}|Function)`:
   - if **Object**: based on [globalShortcut.register](https://electronjs.org/docs/api/global-shortcut)
   - if **Function**: will get a reference on the main window as its first parameter. Should return an *Object*
+- `on(String, Function)`: can listen to all of the available events on [`electron.app`](https://electronjs.org/docs/api/app#events). The last argument is a reference to the current main window (e.g `mainWindow => { ... }`). 
 - `run()`
 
 # Advanced Example
