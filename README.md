@@ -38,7 +38,7 @@ SweetElectron
 - `shortcuts(Object{command:callback}|Function)`:
   - if **Object**: based on [globalShortcut.register](https://electronjs.org/docs/api/global-shortcut)
   - if **Function**: will get a reference on the main window as its first parameter. Should return an *Object*
-- `on(String, Function)`: can listen to all of the available events on [`electron.app`](https://electronjs.org/docs/api/app#events). The last argument is a reference to the current main window (e.g `mainWindow => { ... }`). 
+- `on(String, Function)`: can listen to all of the available events on [`electron.app`](https://electronjs.org/docs/api/app#events). The last argument is a reference to the current main window (e.g `mainWindow => { ... }`).
 - `run()`
 
 # Advanced Example
@@ -54,10 +54,10 @@ const sweet = require('sweet-electron')(electron);
  */
 
 sweet()
-  .url((is) => [__dirname, is.dev() ? 'index_dev.html' : 'index.html'])
+  .url(is => [__dirname, is.dev() ? 'index_dev.html' : 'index.html'])
   .window({ height: 800, transparent: true })
-  .menu((app) => [{ label: app.getName() }, { type: 'separator' }, { role: 'quit' }])
-  .events({
+  .menu(app => [{ label: app.getName() }, { type: 'separator' }, { role: 'quit' }])
+  .rendererEvents({
     setOpacity: (event, opacity, mainWindow) => mainWindow.setOpacity(opacity),
   })
   .run();
