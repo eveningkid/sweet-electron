@@ -14,6 +14,7 @@ const DEFAULT_OPTIONS = {
   window: {
   },
   shortcuts: null,
+  rendererEvents: {},
   events: {
     ready: null,
   },
@@ -63,14 +64,14 @@ class SweetElectron {
     return this;
   }
 
-  events(events) {
+  rendererEvents(events) {
     const ipcMain = this.electron.ipcMain;
 
     for (const key in events) {
       ipcMain.on(key, (...args) => events[key](...args, this.app.mainWindow));
     }
 
-    this.options.ipcMain.events = events;
+    this.options.ipcMain.rendererEvents = events;
     return this;
   }
 
@@ -90,6 +91,11 @@ class SweetElectron {
     }
 
     this.options.events.ready = ready;
+    return this;
+  }
+
+  on(eventName, callback) {
+    this.options.events[eventName] = callback;
     return this;
   }
 }

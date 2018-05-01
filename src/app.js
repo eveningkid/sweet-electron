@@ -7,11 +7,6 @@ class App {
     this.app = electron.app;
     this.options = options;
     this.mainWindow = null;
-
-    this.init = this.init.bind(this);
-    this.createWindow = this.createWindow.bind(this);
-    this.setAbout = this.setAbout.bind(this);
-    this.registerShortcuts = this.registerShortcuts.bind(this);
   }
 
   init() {
@@ -31,6 +26,8 @@ class App {
       .on('activate', () => {
         if (this.mainWindow === null) this.createWindow();
       });
+
+    this.registerEvents();
   }
 
   createWindow() {
@@ -87,6 +84,15 @@ class App {
 
       for (const command in shortcuts) {
         this.electron.globalShortcut.register(command, shortcuts[command]);
+      }
+    }
+  }
+
+  registerEvents() {
+    const events = Object.entries(this.options.events);
+    for (const [eventName, callback] of events) {
+      if (eventName !== 'ready') {
+        this.app.on(eventName, callback);
       }
     }
   }
