@@ -95,7 +95,7 @@ class SweetElectron {
   }
 
   on(eventName, callback) {
-    this.options.events[eventName] = callback;
+    this.options.events[eventName] = (...args) => callback(...args, this.app.mainWindow);
     return this;
   }
 }
